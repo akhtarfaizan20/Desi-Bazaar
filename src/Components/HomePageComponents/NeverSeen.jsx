@@ -15,7 +15,10 @@ const NaverSeen = () => {
   return (
     <>
       <Box>
-        <Image src="/Images/NeverSeen/Banner.png" />
+        <Image
+          src="/Images/NeverSeen/Banner.png"
+          h={useBreakpointValue({ base: "70px", md: "100%" })}
+        />
       </Box>
       <Box>
         <Grid
@@ -26,7 +29,7 @@ const NaverSeen = () => {
         >
           {Images.map((el) => {
             return (
-              <GridItem>
+              <GridItem key={el}>
                 <Image src={el} w="100%" />
               </GridItem>
             );
