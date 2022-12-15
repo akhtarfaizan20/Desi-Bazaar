@@ -15,7 +15,6 @@ import {
   useBreakpointValue,
   useDisclosure,
   Image,
-  Center,
   VStack,
   InputGroup,
   InputLeftElement,
@@ -46,7 +45,7 @@ export default function Navbar() {
   //   }, 5000);
   // }, []);
   return (
-    <Box w={"100%"} zIndex={10}>
+    <Box zIndex={10} position={"fixed"} w="100%">
       <Flex
         bg={useColorModeValue("white", "gray.800")}
         color={useColorModeValue("gray.600", "white")}
@@ -89,7 +88,7 @@ export default function Navbar() {
             </Text>
           </NaviLink>
 
-          <Flex display={{ base: "none", md: "flex" }} ml={0}>
+          <Flex display={{ base: "none", md: "flex" }} ml={5}>
             <DesktopNav />
           </Flex>
         </Flex>
@@ -127,7 +126,7 @@ export default function Navbar() {
             onClick={() => navigate(isAuth ? "/profile" : "/login")}
           >
             <VStack>
-              <CiUser fontSize={30} spacing={0} />
+              <CiUser fontSize={"30px"} spacing={0} />
               <Text fontSize={"13px"}>
                 {isAuth ? "Hi, " + currentUser.first_name : "Profile"}
               </Text>
@@ -173,51 +172,51 @@ const DesktopNav = () => {
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
   return (
-    <Center w={"600px"}>
-      <Stack direction={"row"} spacing={5}>
-        {NAV_ITEMS.map((navItem) => (
-          <Box key={navItem.label}>
-            <Popover trigger={"hover"} placement={"bottom-start"}>
-              <PopoverTrigger>
-                {/* <NaviLink to={navItem.path}> */}
-                <NaviLink to={navItem.path || "/"}>
-                  <Box
-                    p={2}
-                    fontSize={"sm"}
-                    fontWeight={700}
-                    color={linkColor}
-                    _hover={{
-                      textDecoration: "none",
-                      color: linkHoverColor,
-                    }}
-                  >
-                    {navItem.label}
-                  </Box>
-                </NaviLink>
-                {/* </NaviLink> */}
-              </PopoverTrigger>
-
-              {navItem.children && (
-                <PopoverContent
-                  border={0}
-                  boxShadow={"xl"}
-                  bg={popoverContentBgColor}
-                  p={4}
-                  rounded={"xl"}
-                  minW={"sm"}
+    // <Center w={"600px"}>
+    <Flex direction={"row"} w={"150%"} justifyContent={"space-around"}>
+      {NAV_ITEMS.map((navItem) => (
+        <Box key={navItem.label}>
+          <Popover trigger={"hover"} placement={"bottom-start"}>
+            <PopoverTrigger>
+              {/* <NaviLink to={navItem.path}> */}
+              <NaviLink to={navItem.path || "/"}>
+                <Box
+                  p={2}
+                  fontSize={"sm"}
+                  fontWeight={700}
+                  color={linkColor}
+                  _hover={{
+                    textDecoration: "none",
+                    color: linkHoverColor,
+                  }}
                 >
-                  <Stack>
-                    {navItem.children.map((child) => (
-                      <DesktopSubNav key={child.label} {...child} />
-                    ))}
-                  </Stack>
-                </PopoverContent>
-              )}
-            </Popover>
-          </Box>
-        ))}
-      </Stack>
-    </Center>
+                  {navItem.label}
+                </Box>
+              </NaviLink>
+              {/* </NaviLink> */}
+            </PopoverTrigger>
+
+            {navItem.children && (
+              <PopoverContent
+                border={0}
+                boxShadow={"xl"}
+                bg={popoverContentBgColor}
+                p={4}
+                rounded={"xl"}
+                minW={"sm"}
+              >
+                <Stack>
+                  {navItem.children.map((child) => (
+                    <DesktopSubNav key={child.label} {...child} />
+                  ))}
+                </Stack>
+              </PopoverContent>
+            )}
+          </Popover>
+        </Box>
+      ))}
+    </Flex>
+    // </Center>
   );
 };
 
