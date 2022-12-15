@@ -46,7 +46,7 @@ export default function Navbar() {
   //   }, 5000);
   // }, []);
   return (
-    <Box position={"fixed"} w={"100%"} zIndex={10}>
+    <Box w={"100%"} zIndex={10}>
       <Flex
         bg={useColorModeValue("white", "gray.800")}
         color={useColorModeValue("gray.600", "white")}
@@ -83,12 +83,13 @@ export default function Navbar() {
                 textAlign={"left"}
                 src="/Images/Myntra-icon-logo.png"
                 alt="Danish"
-                w={120}
+                minW={"70px"}
+                maxW={"70px"}
               />
             </Text>
           </NaviLink>
 
-          <Flex display={{ base: "none", md: "flex" }} ml={10}>
+          <Flex display={{ base: "none", md: "flex" }} ml={0}>
             <DesktopNav />
           </Flex>
         </Flex>
@@ -172,8 +173,8 @@ const DesktopNav = () => {
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
   return (
-    <Center>
-      <Stack direction={"row"} spacing={7}>
+    <Center w={"600px"}>
+      <Stack direction={"row"} spacing={5}>
         {NAV_ITEMS.map((navItem) => (
           <Box key={navItem.label}>
             <Popover trigger={"hover"} placement={"bottom-start"}>

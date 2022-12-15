@@ -22,7 +22,7 @@ const Deals = () => {
       >
         {Images.map((el) => {
           return (
-            <GridItem>
+            <GridItem key={el}>
               <Image src={el} w="100%" />
             </GridItem>
           );

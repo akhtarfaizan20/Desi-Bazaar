@@ -15,7 +15,10 @@ const ShopByCategory = () => {
   return (
     <>
       <Box>
-        <Image src="/Images/ShopByImages/Banner.png" />
+        <Image
+          src="/Images/ShopByImages/Banner.png"
+          h={useBreakpointValue({ base: "70px", md: "100%" })}
+        />
       </Box>
       <Box>
         <Grid
@@ -35,7 +38,7 @@ const ShopByCategory = () => {
         >
           {Images.map((el) => {
             return (
-              <GridItem>
+              <GridItem key={el}>
                 <Image src={el} w="100%" />
               </GridItem>
             );

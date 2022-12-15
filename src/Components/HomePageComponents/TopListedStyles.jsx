@@ -15,7 +15,10 @@ const TopListedStyles = () => {
   return (
     <>
       <Box>
-        <Image src="/Images/TopListedStyles/Banner.png" />
+        <Image
+          src="/Images/TopListedStyles/Banner.png"
+          h={useBreakpointValue({ base: "70px", md: "100%" })}
+        />
       </Box>
       <Box>
         <Grid
@@ -26,7 +29,7 @@ const TopListedStyles = () => {
         >
           {Images.map((el) => {
             return (
-              <GridItem>
+              <GridItem key={el}>
                 <Image src={el} w="100%" />
               </GridItem>
             );
