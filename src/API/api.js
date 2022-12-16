@@ -20,3 +20,11 @@ export const postUser = (userCredentials) => {
     .then((res) => Promise.resolve("Successfull"))
     .catch((res) => Promise.reject("Failed"));
 };
+
+// this function will take the argument of data and params and will return the data fetched from the API
+export const getProductData = (page) => {
+  return axios
+    .get(`${baseURL}/${page}`)
+    .then((res) => Promise.resolve(res))
+    .catch((err) => Promise.reject(err));
+};
