@@ -327,7 +327,7 @@ const MobileNavItem = ({ label, children, href }) => {
 const NAV_ITEMS = [
   {
     label: "MEN",
-    path: "/men",
+    path: "/products/men",
     children: [
       {
         label: "Explore Men's Fasion",
@@ -343,7 +343,7 @@ const NAV_ITEMS = [
   },
   {
     label: "WOMEN",
-    path: "/women",
+    path: "/products/women",
     children: [
       {
         label: "Explore Women's Fasion",
