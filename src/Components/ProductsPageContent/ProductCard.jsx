@@ -7,17 +7,7 @@ import { SlHandbag } from "react-icons/sl";
 const ProductCard = ({ data }) => {
   return (
     <Box>
-      <Box
-        maxW={230}
-        display={"flex"}
-        justifyContent={"center"}
-        flexDirection={"column"}
-        px={3}
-        pb={"3"}
-        _hover={{
-          boxShadow: "2xl",
-        }}
-      >
+      <Box display={"flex"} justifyContent={"center"} flexDirection={"column"}>
         <Center>
           <Image
             src={data.image}
@@ -33,10 +23,10 @@ const ProductCard = ({ data }) => {
             {data.brand}
           </Text>
           <Text color={"gray.600"} size={"md"} noOfLines={1}>
-            {data.details}
+            {data.desc}
           </Text>
           <Text color="gray.900" size="md" fontWeight={"bold.600"}>
-            ${data.price}
+            ₹{data.price}
           </Text>
           <Center>
             <Button

@@ -1,5 +1,7 @@
 import { Box } from "@chakra-ui/layout";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getProductData } from "../API/api";
 import ProductContainer from "../Components/ProductsPageContent/ProductContainer";
 
 let obj = {
@@ -727,9 +729,19 @@ let obj = {
 };
 
 const Products = () => {
+  const [productData, setProductData] = useState([]);
+  const { category } = useParams();
+
+  useEffect(() => {
+    getProductData(category)
+      .then((res) => {
+        setProductData(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <Box pt={"120px"}>
-      <ProductContainer data={obj.tshirts} />
+      <ProductContainer data={productData} />
     </Box>
   );
 };
