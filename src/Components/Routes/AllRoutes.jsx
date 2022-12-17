@@ -9,7 +9,7 @@ export default function AllRoutes() {
       <Route path="/" element={<HomePage />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/products/:category" element={<Products />} />
+      <Route path="/products/:target" element={<Products />} />
     </Routes>
   );
 }

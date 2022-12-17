@@ -1,38 +1,52 @@
-import { Box, Grid, GridItem } from "@chakra-ui/layout";
+import { Box, GridItem } from "@chakra-ui/layout";
 import { useBreakpointValue } from "@chakra-ui/media-query";
 import React from "react";
+import Pagination from "./Pagination";
 
 import ProductCard from "./ProductCard";
 
-const ProductContainer = ({ data }) => {
+const ProductContainer = ({
+  data,
+  page,
+  totalPages,
+  setSearchParams,
+  searchParams,
+}) => {
   return (
-    <Box
-      display={"grid"}
-      gridTemplateColumns={useBreakpointValue({
-        base: "repeat(5,1fr)",
-        md: "repeat(5,1fr)",
-      })}
-      m="auto"
-      w={"fit-content"}
-      rowGap={10}
-      columnGap={10}
-    >
-      {data &&
-        data.map((el) => {
-          return (
-            <GridItem
-              key={el.id}
-              px={3}
-              pb={"3"}
-              _hover={{
-                boxShadow: "xl",
-              }}
-              maxW={230}
-            >
-              <ProductCard data={el} />
-            </GridItem>
-          );
+    <Box>
+      <Box
+        display={"grid"}
+        gridTemplateColumns={useBreakpointValue({
+          base: "repeat(5,1fr)",
+          md: "repeat(5,1fr)",
         })}
+        m="auto"
+        w={"fit-content"}
+        rowGap={10}
+        columnGap={10}
+      >
+        {data &&
+          data.map((el) => {
+            return (
+              <GridItem
+                key={el.id}
+                px={3}
+                pb={"3"}
+                border="1px solid #ddd"
+                maxW={230}
+                borderRadius="md"
+              >
+                <ProductCard data={el} />
+              </GridItem>
+            );
+          })}
+      </Box>
+      <Pagination
+        page={page}
+        totalPages={totalPages}
+        setSearchParams={setSearchParams}
+        searchParams={searchParams}
+      />
     </Box>
   );
 };
