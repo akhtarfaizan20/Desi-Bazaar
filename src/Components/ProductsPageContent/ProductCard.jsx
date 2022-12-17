@@ -1,6 +1,6 @@
 import { Button } from "@chakra-ui/button";
 import { Image } from "@chakra-ui/image";
-import { Box, Center, Stack, Text } from "@chakra-ui/layout";
+import { Box, Center, HStack, Stack, Text } from "@chakra-ui/layout";
 import React from "react";
 import { SlHandbag } from "react-icons/sl";
 
@@ -25,9 +25,18 @@ const ProductCard = ({ data }) => {
           <Text color={"gray.600"} size={"md"} noOfLines={1}>
             {data.desc}
           </Text>
-          <Text color="gray.900" size="md" fontWeight={"bold.600"}>
-            ₹{data.price}
+          <Text color={"gray.600"} size={"md"} noOfLines={1}>
+            {data.ratings}
           </Text>
+          <HStack>
+            <Text color="gray.900" fontSize="lg" fontWeight={"bold"}>
+              ₹{data.price}
+            </Text>
+            <Text fontSize="xs" as="s">
+              {data.strickedoffprice}
+            </Text>
+          </HStack>
+
           <Center>
             <Button
               variant="outline"
