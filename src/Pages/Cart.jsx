@@ -5,11 +5,13 @@ import {
   useBreakpointValue,
   useToast,
 } from "@chakra-ui/react";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   deleteTheDataFromCart,
   getUsersCartData,
   patchTheQuantityOfCart,
+  placeOrder,
 } from "../API/api";
 import CartContainer from "../Components/CartPageComponents/CartContainer";
 import CartTotal from "../Components/CartPageComponents/CartTotal";
@@ -20,6 +22,8 @@ const Cart = () => {
   const [loader, setLoader] = useState(false);
   const toast = useToast();
   const { currentUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [buttonLoading, setButtonLoading] = useState(false);
   useEffect(() => {
     handleEffect();
   }, []);
@@ -56,6 +60,60 @@ const Cart = () => {
       })
       .catch((err) => console.log(err));
   };
+
+  // this function will place the order
+  const handlePlaceOrder = () => {
+    if (cartData.length === 0) {
+      toast({
+        title: "Cart in empty",
+        description: "Kindly Add the Product in you cart",
+        status: "warning",
+        duration: 4000,
+        isClosable: true,
+      });
+      return;
+    }
+    let order = {
+      userId: currentUser,
+      products: cartData,
+      status: "Confirmed",
+    };
+    setButtonLoading(true);
+    placeOrder(order)
+      .then(async () => {
+        toast({
+          title: "Order Successfull",
+          description: "Your Order has been placed successfully",
+          status: "success",
+          duration: 4000,
+          isClosable: true,
+        });
+        await clearCart(0);
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log("hi");
+        toast({
+          title: "Order Failed",
+          description:
+            "Something went wrong with your order, Please try again!",
+          status: "error",
+          duration: 4000,
+          isClosable: true,
+        });
+      });
+  };
+  const clearCart = (ind) => {
+    if (cartData.length === ind) {
+      setButtonLoading(false);
+      return Promise.resolve("done");
+    }
+    deleteTheDataFromCart(cartData[ind].id)
+      .then((res) => {
+        clearCart(++ind);
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <>
       <Box px={useBreakpointValue({ base: "10px", md: "100px" })} py={"100px"}>
@@ -71,7 +129,11 @@ const Cart = () => {
             removeItem={removeItem}
             changeQty={changeQty}
           />
-          <CartTotal cartData={cartData} />
+          <CartTotal
+            cartData={cartData}
+            handlePlaceOrder={handlePlaceOrder}
+            buttonLoading={buttonLoading}
+          />
         </Flex>
       </Box>
     </>

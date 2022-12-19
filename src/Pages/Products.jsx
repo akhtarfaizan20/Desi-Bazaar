@@ -1,5 +1,4 @@
-import { Box, Flex } from "@chakra-ui/layout";
-import { useBreakpointValue } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/layout";
 import React, { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { getProductData, getTotalPages } from "../API/api";
@@ -41,7 +40,6 @@ const Products = () => {
       });
     setPage(+searchParams.get("page") || 1);
   }, [target, page, searchParams]);
-  console.log(productData);
   return (
     <Flex pt={"100px"} direction="column">
       <ProductSidebar

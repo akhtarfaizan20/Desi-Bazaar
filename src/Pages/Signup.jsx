@@ -346,6 +346,7 @@ export default function Signup() {
   const handleSubmit = () => {
     postUser(formState)
       .then((res) => {
+        console.log(res);
         navigate("/login");
         toast({
           title: "Account created.",

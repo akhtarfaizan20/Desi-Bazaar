@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Center,
   Flex,
   Heading,
   useBreakpointValue,
@@ -16,7 +17,7 @@ const totalCalc = (data) => {
   return "₹" + dollarIndianLocale.format(sum) + "/-";
 };
 
-const CartTotal = ({ cartData }) => {
+const CartTotal = ({ cartData, handlePlaceOrder, buttonLoading }) => {
   return (
     <Box
       border={"1px solid #ddd"}
@@ -59,6 +60,15 @@ const CartTotal = ({ cartData }) => {
           <Box>{totalCalc(cartData)}</Box>
         </Flex>
       </Flex>
+      <Center>
+        <Button
+          mt={"20px"}
+          isLoading={buttonLoading}
+          onClick={handlePlaceOrder}
+        >
+          Place Your Order
+        </Button>
+      </Center>
     </Box>
   );
 };
