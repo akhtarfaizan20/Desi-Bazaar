@@ -1,5 +1,6 @@
 import { Box, GridItem } from "@chakra-ui/layout";
 import { useBreakpointValue } from "@chakra-ui/media-query";
+import { Skeleton } from "@chakra-ui/react";
 import React from "react";
 import Pagination from "./Pagination";
 
@@ -11,15 +12,91 @@ const ProductContainer = ({
   totalPages,
   setSearchParams,
   searchParams,
+  loader,
 }) => {
+  const breakout = useBreakpointValue({
+    base: "1fr",
+    md: "repeat(5,1fr)",
+  });
+  if (loader) {
+    return (
+      <Box
+        m="auto"
+        w={"fit-content"}
+        rowGap={10}
+        columnGap={10}
+        display={"grid"}
+        gridTemplateColumns={breakout}
+      >
+        <Skeleton height={"300px"}>
+          <div>fdsfsdfaaaaaaaaaaaaaaaaaaaa</div>
+          <div>sdddsadasd</div>
+        </Skeleton>
+        <Skeleton height={"300px"}>
+          <div>fdsfsdfaaaaaaaaaaaaaaaaaaaa</div>
+          <div>sdddsadasd</div>
+        </Skeleton>
+        <Skeleton height={"300px"}>
+          <div>fdsfsdfaaaaaaaaaaaaaaaaaaaa</div>
+          <div>sdddsadasd</div>
+        </Skeleton>
+        <Skeleton height={"300px"}>
+          <div>fdsfsdfaaaaaaaaaaaaaaaaaaaa</div>
+          <div>sdddsadasd</div>
+        </Skeleton>
+        <Skeleton height={"300px"}>
+          <div>fdsfsdfaaaaaaaaaaaaaaaaaaaa</div>
+          <div>sdddsadasd</div>
+        </Skeleton>
+        <Skeleton height={"300px"}>
+          <div>fdsfsdfaaaaaaaaaaaaaaaaaaaa</div>
+          <div>sdddsadasd</div>
+        </Skeleton>
+        <Skeleton height={"300px"}>
+          <div>fdsfsdfaaaaaaaaaaaaaaaaaaaa</div>
+          <div>sdddsadasd</div>
+        </Skeleton>
+        <Skeleton height={"300px"}>
+          <div>fdsfsdfaaaaaaaaaaaaaaaaaaaa</div>
+          <div>sdddsadasd</div>
+        </Skeleton>
+        <Skeleton height={"300px"}>
+          <div>fdsfsdfaaaaaaaaaaaaaaaaaaaa</div>
+          <div>sdddsadasd</div>
+        </Skeleton>
+        <Skeleton height={"300px"}>
+          <div>fdsfsdfaaaaaaaaaaaaaaaaaaaa</div>
+          <div>sdddsadasd</div>
+        </Skeleton>
+        <Skeleton height={"300px"}>
+          <div>fdsfsdfaaaaaaaaaaaaaaaaaaaa</div>
+          <div>sdddsadasd</div>
+        </Skeleton>
+        <Skeleton height={"300px"}>
+          <div>fdsfsdfaaaaaaaaaaaaaaaaaaaa</div>
+          <div>sdddsadasd</div>
+        </Skeleton>
+        <Skeleton height={"300px"}>
+          <div>fdsfsdfaaaaaaaaaaaaaaaaaaaa</div>
+          <div>sdddsadasd</div>
+        </Skeleton>
+        <Skeleton height={"300px"}>
+          <div>fdsfsdfaaaaaaaaaaaaaaaaaaaa</div>
+          <div>sdddsadasd</div>
+        </Skeleton>
+        <Skeleton height={"300px"}>
+          <div>fdsfsdfaaaaaaaaaaaaaaaaaaaa</div>
+          <div>sdddsadasd</div>
+        </Skeleton>
+      </Box>
+    );
+  }
+
   return (
     <Box>
       <Box
         display={"grid"}
-        gridTemplateColumns={useBreakpointValue({
-          base: "repeat(5,1fr)",
-          md: "repeat(5,1fr)",
-        })}
+        gridTemplateColumns={breakout}
         m="auto"
         w={"fit-content"}
         rowGap={10}
