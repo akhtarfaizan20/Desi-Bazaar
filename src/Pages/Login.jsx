@@ -70,7 +70,11 @@ export default function Login() {
             Sign in to your account
           </Heading>
           <Text fontSize={"lg"} color={"gray.600"}>
-            to enjoy all of our cool <Link color={"pink.400"}>features</Link> ✌️
+            to enjoy all of our cool{" "}
+            <Link color={"pink.400"} as={RouteLink} to="/">
+              features
+            </Link>{" "}
+            ✌️
           </Text>
         </Stack>
         <Box

@@ -1,15 +1,16 @@
 import axios from "axios";
 
-const baseURL = `https://defiant-deer-threads.cyclic.app`;
+const baseURL = `http://localhost:8080`;
+// const baseURL = `https://defiant-deer-threads.cyclic.app`;
 
 // function to perform the login
 
 // it will take the email id and return the user
-export const getUser = (email) => {
+export const getUser = (id) => {
   return axios
-    .get(`${baseURL}/users/${email}`)
+    .get(`${baseURL}/users/${id}`)
     .then((res) => Promise.resolve(res))
-    .catch((err) => Promise.reject("User Not Found"));
+    .catch(() => Promise.reject("User Not Found"));
 };
 
 // this function will perform the signup functionality
@@ -17,7 +18,7 @@ export const getUser = (email) => {
 export const postUser = (userCredentials) => {
   return axios
     .post(`${baseURL}/users`, userCredentials)
-    .then((res) => Promise.resolve("Successfull"))
+    .then((res) => "Successfull")
     .catch((res) => Promise.reject("Failed"));
 };
 
@@ -107,5 +108,17 @@ export const patchTheQuantityOfCart = (id, qty) => {
       qty: +qty,
     })
     .then((res) => Promise.resolve(res))
-    .catch((err) => Promise.reject(err));
+    .catch((err) => {
+      console.log("hi");
+      Promise.resolve(err);
+    });
+};
+
+// this function will take the order and post to order api
+
+export const placeOrder = (order) => {
+  return axios
+    .post(`${baseURL}/order`, order)
+    .then(() => Promise.resolve("order placed"))
+    .catch(() => Promise.reject("somthing went wrong"));
 };
