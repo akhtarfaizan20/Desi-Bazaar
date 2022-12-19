@@ -8,8 +8,9 @@ function App() {
       <Navbar />
       <div>
         <AllRoutes />
-        <Footer />
       </div>
+
+      <Footer />
     </div>
   );
 }

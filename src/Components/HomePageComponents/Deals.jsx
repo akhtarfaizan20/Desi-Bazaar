@@ -11,7 +11,6 @@ const Deals = () => {
   const Images = new Array(18)
     .fill(0)
     .map((el, i) => (el = `/Images/Deals/${i + 1}.png`));
-  console.log(Images);
   return (
     <Box>
       <Grid

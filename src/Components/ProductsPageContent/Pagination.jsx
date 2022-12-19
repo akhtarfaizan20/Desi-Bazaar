@@ -1,5 +1,5 @@
 import { Button } from "@chakra-ui/button";
-import { Box, Center, Flex } from "@chakra-ui/layout";
+import { Flex } from "@chakra-ui/layout";
 import React from "react";
 
 const Pagination = ({ page, totalPages, setSearchParams, searchParams }) => {

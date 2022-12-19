@@ -11,7 +11,6 @@ const ShopByCategory = () => {
   const Images = new Array(34)
     .fill(0)
     .map((el, i) => (el = `/Images/ShopByImages/${i + 1}.png`));
-  console.log(Images);
   return (
     <>
       <Box>
