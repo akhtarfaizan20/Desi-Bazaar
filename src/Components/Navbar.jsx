@@ -37,7 +37,7 @@ export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
   const navigate = useNavigate();
 
-  const { isAuth, currentUser } = useContext(AuthContext);
+  const { isAuth, currentUser, logout } = useContext(AuthContext);
   // useEffect(() => {
   //   login({ email: "akhtarfaizan20@gmail.com", password: "123456789" });
   //   setInterval(() => {
@@ -123,7 +123,7 @@ export default function Navbar() {
             fontSize={"sm"}
             fontWeight={600}
             variant={"link"}
-            onClick={() => navigate(isAuth ? "/profile" : "/login")}
+            onClick={() => (isAuth ? logout() : navigate("/login"))}
           >
             <VStack>
               <CiUser fontSize={"30px"} spacing={0} />

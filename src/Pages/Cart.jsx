@@ -1,7 +1,9 @@
 import {
   Box,
+  Center,
   Flex,
   Heading,
+  Image,
   useBreakpointValue,
   useToast,
 } from "@chakra-ui/react";
@@ -115,6 +117,7 @@ const Cart = () => {
       })
       .catch((err) => console.log(err));
   };
+
   return (
     <>
       <Box px={useBreakpointValue({ base: "10px", md: "100px" })} py={"100px"}>
@@ -125,16 +128,24 @@ const Cart = () => {
           direction={useBreakpointValue({ base: "column", md: "row" })}
           gap={"30px"}
         >
-          <CartContainer
-            cartData={cartData}
-            removeItem={removeItem}
-            changeQty={changeQty}
-          />
-          <CartTotal
-            cartData={cartData}
-            handlePlaceOrder={handlePlaceOrder}
-            buttonLoading={buttonLoading}
-          />
+          {cartData.length === 0 ? (
+            <Center m="auto">
+              <Image src="/Images/emptycart.png" m="auto" w="500px" />
+            </Center>
+          ) : (
+            <>
+              <CartContainer
+                cartData={cartData}
+                removeItem={removeItem}
+                changeQty={changeQty}
+              />
+              <CartTotal
+                cartData={cartData}
+                handlePlaceOrder={handlePlaceOrder}
+                buttonLoading={buttonLoading}
+              />
+            </>
+          )}
         </Flex>
       </Box>
     </>

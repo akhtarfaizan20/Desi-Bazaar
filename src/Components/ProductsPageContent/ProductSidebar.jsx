@@ -13,15 +13,44 @@ import {
   Checkbox,
   Box,
   VStack,
+  Flex,
+  Select,
 } from "@chakra-ui/react";
 import { MinusIcon, AddIcon } from "@chakra-ui/icons";
-import React from "react";
+import React, { useState } from "react";
 import { FaFilter } from "react-icons/fa";
 
 const ProductSidebar = ({ searchParams, setSearchParams }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  let params = {};
+  for (const entry of searchParams.entries()) {
+    if (entry[0] === "start" || entry[0] === "end") {
+      params[entry[0]] = +entry[1];
+    } else {
+      params[entry[0]] = entry[1];
+    }
+  }
+  const handleSort = (e) => {
+    let params = {};
+    for (const entry of searchParams.entries()) {
+      if (entry[0] === "start" || entry[0] === "end") {
+        params[entry[0]] = +entry[1];
+      } else {
+        params[entry[0]] = entry[1];
+      }
+    }
+
+    if (e.target.value === "default") {
+      params.sort = undefined;
+      params.order = undefined;
+      setSearchParams({ ...params });
+    } else {
+      let [order, sort] = e.target.value.split("-");
+      setSearchParams({ ...params, sort: sort, order: order });
+    }
+  };
   return (
-    <>
+    <Flex>
       <Button
         colorScheme="pink"
         onClick={onOpen}
@@ -31,6 +60,12 @@ const ProductSidebar = ({ searchParams, setSearchParams }) => {
       >
         <FaFilter />
       </Button>
+      <Select w="fit-content" onChange={handleSort}>
+        <option value="default">Apply Sorting</option>
+        <option value="asc-price">Sort by Price: low to high</option>
+        <option value="desc-price">Sort by Price: high to low</option>
+        <option value="desc-ratings">Top Ratings</option>
+      </Select>
       <Drawer placement={"left"} onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent>
@@ -420,7 +455,7 @@ const ProductSidebar = ({ searchParams, setSearchParams }) => {
           </DrawerBody>
         </DrawerContent>
       </Drawer>
-    </>
+    </Flex>
   );
 };
 
