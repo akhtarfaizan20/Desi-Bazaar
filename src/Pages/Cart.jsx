@@ -89,6 +89,7 @@ const Cart = () => {
           isClosable: true,
         });
         await clearCart(0);
+        handleEffect();
         navigate("/");
       })
       .catch((err) => {
