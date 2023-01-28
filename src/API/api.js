@@ -1,8 +1,8 @@
 import axios from "axios";
 
-// const baseURL = `https://desibazaar.onrender.com`;
+const baseURL = `https://desibazaar.onrender.com`;
 // const baseURL = `https://defiant-deer-threads.cyclic.app`;
-const baseURL = "http://localhost:8080";
+// const baseURL = "http://localhost:8080";
 
 // function to perform the login
 
