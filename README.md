@@ -14,18 +14,22 @@ Project link -> https://desibazaar.vercel.app/
 
 # 1. Landing Page
 
-![landing page](https://github.com/akhtarfaizan20/geek-buying-clone/blob/master/images/README/home1.png?raw=true)
-![landing page](https://github.com/akhtarfaizan20/geek-buying-clone/blob/master/images/README/home2.png?raw=true)
+![landing page](https://github.com/akhtarfaizan20/Desi-Bazaar/blob/master/public/Images/README/home1.png?raw=true)
+![landing page](https://github.com/akhtarfaizan20/Desi-Bazaar/blob/master/public/Images/README/home2.png?raw=true)
 
 
 # 2. Login Page
 
-![cateogry](https://github.com/akhtarfaizan20/geek-buying-clone/blob/master/images/README/lagin.png?raw=true)
+![login](https://github.com/akhtarfaizan20/Desi-Bazaar/blob/master/public/Images/README/login.png?raw=true)
 
 # 3. Signup Page
 
-![cart](https://github.com/akhtarfaizan20/geek-buying-clone/blob/master/images/README/signup.png?raw=true)
+![cart](https://github.com/akhtarfaizan20/Desi-Bazaar/blob/master/public/Images/README/signup.png?raw=true)
 
-# 4. Product Details Page
+# 4. Product Page
 
-![order](https://github.com/akhtarfaizan20/geek-buying-clone/blob/master/images/README/productDetails.png?raw=true)
+![product](https://github.com/akhtarfaizan20/Desi-Bazaar/blob/master/public/Images/README/products.png?raw=true)
+
+# 5. Cart Page
+
+![product](https://github.com/akhtarfaizan20/Desi-Bazaar/blob/master/public/Images/README/cartpage.png?raw=true)
