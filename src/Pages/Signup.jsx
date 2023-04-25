@@ -356,7 +356,8 @@ export default function Signup() {
           isClosable: true,
         });
       })
-      .catch((res) => {
+      .catch((err) => {
+        console.log(err);
         toast({
           title: "Something Went Wrong.",
           description:
